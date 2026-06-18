@@ -15,8 +15,15 @@
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   background: linear-gradient(180deg, #111827 0%, #1f2937 100%);
   color: var(--text);
   min-height: 100vh;
@@ -38,6 +45,8 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transform: translateY(0);
   transition: transform 0.3s ease;
+  max-width: 500px;
+  width: 100%;
 }
 
 .welcome:hover {
@@ -50,22 +59,16 @@ body {
   font-size: 2.2rem;
 }
 
-.welcome button {
-  background: linear-gradient(45deg, var(--accent), var(--accent-hover));
-  color: white;
-  border: none;
-  padding: 14px 32px;
-  font-size: 1.1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-  transition: all 0.3s ease;
+.welcome p {
+  color: var(--muted);
+  margin-bottom: 24px;
 }
 
-.welcome button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+.category-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
 }
 
 main.card {
@@ -103,7 +106,9 @@ header p {
   color: var(--muted);
   font-size: 0.9rem;
 }
-#back {
+
+#back,
+#categoryBackBtn {
   background: transparent;
   color: var(--accent);
   border: 2px solid var(--accent);
@@ -112,31 +117,19 @@ header p {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  margin: 10px;
+  margin-bottom: 15px;
+  box-shadow: none;
 }
 
-#back:hover {
+#back:hover,
+#categoryBackBtn:hover {
   background: var(--accent);
   color: #fff;
   transform: translateY(-2px);
 }
 
-#back:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-/* Responsive for mobile */
-@media (max-width: 480px) {
-  #back {
-    width: 100%;
-    padding: 12px 0;
-    font-size: 14px;
-  }
-}
-
 .question {
-  padding: 10px;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.04);
@@ -156,7 +149,7 @@ header p {
 }
 
 .choice {
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -164,6 +157,8 @@ header p {
   transition: all 0.2s ease;
   text-align: left;
   font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
 }
 
 .choice:hover {
@@ -178,13 +173,15 @@ header p {
 }
 
 .choice.correct {
-  background: rgba(52, 211, 153, 0.15);
-  border-color: var(--success);
+  background: rgba(52, 211, 153, 0.15) !important;
+  border-color: var(--success) !important;
+  color: #fff;
 }
 
 .choice.wrong {
-  background: rgba(248, 113, 113, 0.15);
-  border-color: var(--danger);
+  background: rgba(248, 113, 113, 0.15) !important;
+  border-color: var(--danger) !important;
+  color: #fff;
 }
 
 footer {
@@ -192,13 +189,15 @@ footer {
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 button {
   background: linear-gradient(45deg, var(--accent), var(--accent-hover));
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 26px;
   border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
@@ -230,7 +229,6 @@ button[disabled] {
 }
 
 .meta {
-  margin: 12px;
   color: var(--muted);
   font-size: 0.9rem;
 }
@@ -239,7 +237,7 @@ button[disabled] {
   display: flex;
   gap: 16px;
   align-items: center;
-  margin: 10px;
+  margin-bottom: 15px;
 }
 
 .small {
@@ -256,5 +254,16 @@ button[disabled] {
   }
   .welcome {
     padding: 24px;
+  }
+  #back,
+  #categoryBackBtn {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
   }
 }
